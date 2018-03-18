@@ -4,6 +4,7 @@ def create_api_conn(&block)
   port = Rails.configuration.genieacs_api_port
   use_ssl = Rails.configuration.genieacs_api_use_ssl
 
+  logger.error("Api connection to #{Rails.configuration.genieacs_api_host} #{Rails.configuration.genieacs_api_port}")
   if block_given?
     Net::HTTP.start(host, port, {use_ssl: use_ssl}, &Proc.new)
   else
@@ -21,6 +22,7 @@ def query_resource(http, resource, query, projection = nil, skip = nil, limit = 
   args['limit'] = limit if limit
   args['sort'] = ActiveSupport::JSON.encode(sort) if sort
 
+  logger.error("Api connection to #{Rails.configuration.genieacs_api_host} #{Rails.configuration.genieacs_api_port}")
 
   host = Rails.configuration.genieacs_api_host
   port = Rails.configuration.genieacs_api_port
