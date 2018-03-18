@@ -85,8 +85,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # GenieACS API
-  config.genieacs_api_host = 'localhost'
-  config.genieacs_api_port = 7557
+  config.genieacs_api_host = ENV['GENIEACS_API_HOST']
+  config.genieacs_api_port = ENV['GENIEACS_API_PORT']
   config.genieacs_api_use_ssl = false
   config.log_level = :debug
 end
